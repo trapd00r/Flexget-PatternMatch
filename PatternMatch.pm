@@ -15,7 +15,7 @@ our %patterns = (
   'EPL|WWE|UFC|UEFA|Rugby|La\.Liga|
     Superleague|Allsvenskan|
     Formula\.Ford'                      => "\033[38;5;144mSport",
-  'swedish'                             => "\033[38;5;122mSwedish",
+  '(?i)swedish'                             => "\033[38;5;122mSwedish",
 
   'PsyCZ|MYCEL|UPE|HiEM|PSi'            => "\033[38;5;192mPsychedelic",
   '.+-(H3X|wAx|CMS|BFHMP3|WHOA|RNS|
@@ -42,7 +42,7 @@ sub patternmatch {
     $file = sprintf("%60s", $file);
     $file = sprintf("%.60s", $file);
     for my $pattern(keys(%patterns)) {
-      if($file =~ m/$pattern/ix) {
+      if($file =~ m/$pattern/x) {
         $file = $file.' '.$patterns{$pattern}.$nocolor;
       }
     }
