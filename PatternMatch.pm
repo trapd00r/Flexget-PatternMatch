@@ -14,24 +14,26 @@ our %patterns = (
     colossal\..+'                       => "\033[38;5;112mDocumentary",
   'EPL|WWE|UFC|UEFA|Rugby|La\.Liga|
     Superleague|Allsvenskan|
-    Formula\.Ford'                      => "\033[38;5;144mSport",
-  '(?i)swedish'                             => "\033[38;5;122mSwedish",
+    Formula\.(Ford|[0-9]{4})'           => "\033[38;5;144mSport",
+  '(?i)swedish|-se-'                    => "\033[38;5;122mSwedish",
+  '(?i)jay\.leno'                       => "\033[38;5;111mTalk Show",
 
-  'PsyCZ|MYCEL|UPE|HiEM|PSi'            => "\033[38;5;192mPsychedelic",
+  'PsyCZ|MYCEL|UPE|HiEM|PSi|gEm'        => "\033[38;5;192mPsychedelic",
   '.+-(H3X|wAx|CMS|BFHMP3|WHOA|RNS|
-    C4|UMT|0MNi(.+)?|FRAY(.+)?)$'       => "\033[38;5;94mHip-Hop",
+    C4|CR|UMT|0MNi(.+)?|FRAY(.+)?)$'    => "\033[38;5;94mHip-Hop",
   'LzY|qF|SRP|NiF'                      => "\033[38;5;126mRock/Metal",
-  'TALiON|HB'                           => "\033[38;5;41mHardstyle",
+  'TALiON|HB|DV8'                       => "\033[38;5;41mHardstyle",
+  '-sour$'                              => "\033[38;5;166mDnB",
   'VA(-|_-_).+'                         => "\033[38;5;49mVarious",
-  '.+(-WEB-)'                           => "\033[38;5;250mWEB",
-  '.+(-CDS-)'                           => "\033[38;5;244mCDS",
-  '.+(-CDM-)'                           => "\033[38;5;233mCDM",
-  '.+(-CDA-)'                           => "\033[38;5;222mCDA",
-  '.+(-DAB-)'                           => "\033[38;5;211mDAB",
-  '.+(-VLS-)'                           => "\033[38;5;201mVLS",
-  '.+(-CABLE-)'                         => "\033[38;5;191mCABLE",
+  '\(?_?-?WEB-?_?\)?'                   => "\033[38;5;250mWEB",
+  '\(?_?-?CDS-?_?\)?'                   => "\033[38;5;244mCDS",
+  '\(?_?-?CDM-?_?\)?'                   => "\033[38;5;233mCDM",
+  '\(?_?-?CDA-?_?\)?'                   => "\033[38;5;222mCDA",
+  '\(?_?-?DAB-?_?\)?'                   => "\033[38;5;211mDAB",
+  '\(?_?-?VLS|Vinyl-?_?\)?'             => "\033[38;5;201mVLS",
+  '\(?_?-?CABLE-?_?\)?'                 => "\033[38;5;191mCABLE",
   'Live_(on|at|in)'                     => "\033[38;5;181mLIVE",
-
+  '-Recycled.+$'                        => "\033[38;5;215mRe-release",
 
 );
 sub patternmatch {
