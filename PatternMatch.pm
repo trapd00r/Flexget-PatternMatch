@@ -18,24 +18,25 @@ our %patterns = (
   '(?i)swedish|-se-'                    => "\033[38;5;122mSwedish",
   '(?i)jay\.leno'                       => "\033[38;5;111mTalk Show",
 
-  'PsyCZ|MYCEL|UPE|HiEM|PSi|gEm'        => "\033[38;5;192mPsychedelic",
+  'PsyCZ|MYCEL|UPE|HiEM|PSi|gEm'        => "\033[38;5;192m\033[1mPsychedelic",
   '.+-(H3X|wAx|CMS|BFHMP3|WHOA|RNS|
-    C4|CR|UMT|0MNi(.+)?|FRAY(.+)?)$'    => "\033[38;5;94mHip-Hop",
+    C4|CR|UMT|0MNi(.+)?|FRAY(.+)?)$'    => "\033[38;5;94m\033[1mHip-Hop",
   'LzY|qF|SRP|NiF'                      => "\033[38;5;126mRock/Metal",
-  'TALiON|HB|DV8'                       => "\033[38;5;41mHardstyle",
+  'TALiON|HB|DV8'                       => "\033[38;5;41m\033[1mHardstyle",
   '-sour$'                              => "\033[38;5;166mDnB",
   'VA(-|_-_).+'                         => "\033[38;5;49mVarious",
-  '\(?_?-?WEB-?_?\)?'                   => "\033[38;5;250mWEB",
+  '\(?_?-?WEB-?_?\)?'                   => "\033[38;5;190mWEB",
   '\(?_?-?CDS-?_?\)?'                   => "\033[38;5;244mCDS",
   '\(?_?-?CDM-?_?\)?'                   => "\033[38;5;233mCDM",
   '\(?_?-?CDA-?_?\)?'                   => "\033[38;5;222mCDA",
   '\(?_?-?DAB-?_?\)?'                   => "\033[38;5;211mDAB",
-  '\(?_?-?VLS|Vinyl-?_?\)?'             => "\033[38;5;201mVLS",
+  '\(?_?-?VLS|Vinyl-?_?\)?'             => "\033[38;5;201m\033[1mVLS",
   '\(?_?-?CABLE-?_?\)?'                 => "\033[38;5;191mCABLE",
   'Live_(on|at|in)'                     => "\033[38;5;181mLIVE",
   '-Recycled.+$'                        => "\033[38;5;215mRe-release",
 
 );
+
 sub patternmatch {
   my @files = @_;
   my $nocolor = "\033[0m";
@@ -45,7 +46,7 @@ sub patternmatch {
     $file = sprintf("%.60s", $file);
     for my $pattern(keys(%patterns)) {
       if($file =~ m/$pattern/x) {
-        $file = $file.' '.$patterns{$pattern}.$nocolor;
+        $file = $file. " \033[3m" .$patterns{$pattern}.$nocolor;
       }
     }
   }
