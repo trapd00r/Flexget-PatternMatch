@@ -7,13 +7,17 @@ use Data::Dumper;
 use strict;
 
 our %patterns = (
-  'S[0-9]{2}E[0-9]{2}'               => {
+  'S[0-9]{1}[2-9]{1}E[0-9]{1}[2-9]'  => {
     ansi  => "\e[38;5;198mNew Episode\e[0m",
     dzen  => "^fg(#ff0000)New Episode^fg()",
   },
   'S01E01'                           => {
     ansi  => "\e[38;5;196mNew Show\e[0m",
     dzen  => "^fg(#ffff00)New Show^fg()",
+  },
+  'S0\dE01'                          => {
+    ansi  => "\e[38;5;196mSeason Premiere\e[0m",
+    dzen  => "^fg(#cccd05)Season Premiere^fg()",
   },
   'do(c|k?)u(ment.+)?|
   (discovery|history)\.(channel)?|
@@ -105,13 +109,14 @@ sub patternmatch {
   chomp(my @files = @_);
 
   my %results;
+  my $i = 0;
   for my $file( @files ) {
     for my $pattern(keys(%patterns)) {
-
       if($file =~ m/$pattern/x) {
-        $results{$file} = $patterns{$pattern}{$esc_style};
+        $results{$i}{$file} = $patterns{$pattern}{$esc_style};
       }
     }
+    $i++;
   }
   return(\%results);
 }
