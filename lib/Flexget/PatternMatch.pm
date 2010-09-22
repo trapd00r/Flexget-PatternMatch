@@ -122,6 +122,8 @@ sub patternmatch {
   return(\%results);
 }
 
+1;
+
 =head1 NAME
 
   Flexget::PatternMatch - Retrieve type of media for parsed flexget records
