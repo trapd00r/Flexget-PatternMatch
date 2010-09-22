@@ -1,7 +1,8 @@
 package Flexget::PatternMatch;
 require Exporter;
 @ISA = qw(Exporter);
-@EXPORT_OK = qw(patternmatch);
+#@EXPORT_OK = qw(patternmatch);
+our @EXPORT = qw(patternmatch);
 
 use Data::Dumper;
 use strict;
@@ -16,7 +17,7 @@ our %patterns = (
     dzen  => "^fg(#ffff00)New Show^fg()",
   },
   'S0\dE01'                          => {
-    ansi  => "\e[38;5;196mSeason Premiere\e[0m",
+    ansi  => "\e[1mSeason Premiere\e[0m",
     dzen  => "^fg(#cccd05)Season Premiere^fg()",
   },
   'do(c|k?)u(ment.+)?|
@@ -121,3 +122,63 @@ sub patternmatch {
   return(\%results);
 }
 
+=head1 NAME
+
+  Flexget::PatternMatch - Retrieve type of media for parsed flexget records
+
+=head1 SYNOPSIS
+
+  use Flexget::PatternMatch;
+  use Flexget::Parse;
+
+  my $log = shift // "$ENV{HOME}/.flexget.log";
+  open(my $fh, '<', $log) or die("Could not open $log: $!");
+  chomp(my @unparsed = <$fh>);
+  close($fh);
+
+  # use extended ANSI escape sequences for colors
+  my $ansi = patternmatch('ansi', flexparse(@content));
+
+  # use dzen2 notation
+  my $dzen = patternmatch('dzen', flexparse(@content));
+
+  for my $n(keys(%{$ansi})) {
+    for my $release(keys(%{$ansi->{$n}})) {
+      printf("%50.50s | %s\n", $release, $ansi->{$n}{$release});
+    }
+  }
+
+=head1 DESCRIPTION
+
+Flexget::PatternMatch takes a list of filenames and returns a hash of hashes
+that looks like this:
+
+    # dzen2 notation
+    '2' => {
+      'Laleh-Prinsessor-SE-2006-LzY' => '^fg(#af0087)Rock^fg()'
+    },
+
+    # Extended terminal color escape sequences
+    '9' => {
+      'Prison.Break.S01E01-FOOBAR'   => "\e[38;5;160mNew Show\e[0m"
+    },
+
+=head2 EXPORTS
+
+patternmatch() is exported by default
+
+=head1 AUTHOR
+
+Written by Magnus Woldrich
+
+=head1 REPORTING BUGS
+
+Report bugs to trapd00r@trapd00r.se
+
+=head1 COPYRIGHT
+
+Copyright (C) 2010 Magnus Woldrich
+
+License GPLv2
+
+=cut
