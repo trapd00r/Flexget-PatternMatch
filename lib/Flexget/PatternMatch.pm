@@ -127,6 +127,9 @@ our %patterns = (
   },
 );
 
+my(undef,undef,undef,undef,undef,$year) = localtime(time);
+$year += 1900;
+
 our %wanted = (
   'Fringe'                     => {
     dzen  => "^fg(#000000)^bg(#ff0000)",
@@ -138,15 +141,15 @@ our %wanted = (
     256   => "\e[38;5;148m",
     none  => "",
   },
-  '(?:do(c|k)ument(a|ä)ry?)'   => {
-    dzen  => "^fg(#56f418)",
+  '(?:do(c|k)ument(a|ä)ry?|History\.Channel)'   => {
+    dzen  => "^fg(#09b33f)",
     256   => "\e[38;5;197m",
     none  => "",
   },
 
   'pilot'                      => {
     dzen  => "^fg(#c02d07)",
-    256   => "\e[38;5;31m\e[1m",
+    256   => "\e[38;5;85m\e[1m",
     none  => "",
   },
   'S01E01'                     => {
@@ -172,6 +175,31 @@ our %wanted = (
   'DIMENSION'                  => {
     dzen  => "^fg(#faeec4)",
     256   => "\e[38;5;240m\e[1m",
+    none  => "",
+  },
+  'C4'                      => {
+    dzen  => "^fg(#facddc)",
+    256   => "\e[38;5;130m\e[1m",
+    none  => "",
+  },
+  'LOL'                     => {
+    dzen  => "^fg(#facddc)",
+    256   => "\e[38;5;118m\e[1m",
+    none  => "",
+  },
+  '720p'                    => {
+    dzen  => "^fg(#ff0ccd)",
+    256   => "\e[38;5;178m\e[1m",
+    none  => "",
+  },
+  'Promo_CD'                => {
+    dzen  => "^fg(#dddc26)",
+    256   => "\e[38;5;173m",
+    none  => "",
+  },
+  $year                     => {
+    dzen  => "^fg(#000000)",
+    256   => "\e[1m",
     none  => "",
   },
 );
