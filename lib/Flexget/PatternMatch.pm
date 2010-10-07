@@ -40,7 +40,7 @@ our %patterns = (
   },
   '(?i)swedish|-se-'                 => {
     256   =>  "\e[38;5;122mSwedish\e[0m",
-    dzen  =>  "^fg(#87ffd7)Swedish^fg()",
+    dzen  =>  "^fg(#87ffd7)Swedish^fg(#121212)",
     none  =>  "Swedish",
   },
   '(?i)jay\.leno'                    => {
@@ -56,7 +56,7 @@ our %patterns = (
   '.+-(H3X|wAx|CMS|BFHMP3|WHOA|RNS|
   C4|CR|UMT|0MNi)(.+)?|FRAY(.+)?$'   => {
     256   =>  "\e[38;5;094mHip-Hop\e[0m",
-    dzen  =>  "^fg(#875f00)Hip-Hop^fg()",
+    dzen  =>  "^fg(#309184)Hip-Hop^fg()",
     none  =>  "Hip-Hop",
   },
   'LzY|qF|SRP|NiF'                   => {
@@ -132,7 +132,7 @@ $year += 1900;
 
 our %wanted = (
   'Fringe'                     => {
-    dzen  => "^fg(#000000)^bg(#ff0000)",
+    dzen  => "^fg(#000000)^bg(#121212)",
     256   => "\e[48;5;052m\e[1m\e[38;5;196m",
     none  => "",
   },
@@ -188,7 +188,7 @@ our %wanted = (
     none  => "",
   },
   '720p'                    => {
-    dzen  => "^fg(#ff0ccd)",
+    dzen  => "^fg(#ffcccd)",
     256   => "\e[38;5;178m\e[1m",
     none  => "",
   },
@@ -198,14 +198,14 @@ our %wanted = (
     none  => "",
   },
   $year                     => {
-    dzen  => "^fg(#000000)",
+    dzen  => "^fg(#93c26b)",
     256   => "\e[1m",
     none  => "",
   },
 );
 
 our %end = (
-  dzen  => "^fg()^bg()",
+  dzen  => "", # ^bg()^fg()
   256   => "\e[0m",
   none  => "",
 );
